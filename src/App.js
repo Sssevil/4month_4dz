@@ -3,14 +3,14 @@ import MainPage from "./pages/mainPage/MainPage"
 import ErrorPage from "./pages/errorPage/ErrorPage"
 import {useLayoutEffect, useState} from "react"
 
+const name = prompt('Введите имя')
+const lastname =prompt('Введите фамилию')
 function App() {
     const [user,setUser] = useState({})
 
     useLayoutEffect(() => {
-        const name = prompt('Введите имя').trim()
-        const lastname =prompt('Введите фамилию').trim()
 
-        setUser({ name, lastname })
+        setUser({name, lastname })
 
     }, [])
 
@@ -18,8 +18,7 @@ function App() {
         return null
     }
 
-    return (user.name==='John' && user.lastname ==='Johns') ?
-        <MainPage user={user}/> : <ErrorPage user={user}/>
+    return (user.name.trim() ==='John' && user.lastname.trim() ==='Johns') ? <MainPage user={user}/> : <ErrorPage user={user}/>
 }
 
 export default App
